@@ -10,27 +10,16 @@ import UIKit
 
 class TasksViewController: UIViewController {
     
-    @IBOutlet private weak var tasksTableView: UITableView! {
-        didSet {
-            
-            tasksTableView.dataSource = self
-        }
-    }
+    @IBOutlet private weak var tasksTableView: UITableView!
+    @IBOutlet weak var taskTextField: UITextField!
     
-    @IBOutlet weak var taskTextField: UITextField! {
-        didSet {
-            taskTextField.delegate = self
-        }
-    }
-    
-    var viewModel = TasksViewModel()
+    private var viewModel = TasksViewModel()
+    private lazy var dataSource = TaskDataSource(with: self.viewModel, tableView: self.tasksTableView)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tasksTableView.dataSource = self
-        tasksTableView.delegate = self
-        
+        _ = dataSource
         taskTextField.delegate = self
     
         self.configure()

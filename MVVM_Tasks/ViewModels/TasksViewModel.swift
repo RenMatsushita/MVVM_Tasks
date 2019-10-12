@@ -10,16 +10,15 @@ import Foundation
 
 class TasksViewModel {
     
-    let model = TodoModel()
+    private var model: TodoModelProtocol!
     
     var todoTitleList: [String] {
-        guard let tasks = model.getTasks() else {
-            return ["タスクを追加してください"]
-        }
-        return tasks
+        let tasks = model.getTasks()
+        return tasks.isEmpty ? ["タスクを追加してください"] : tasks
     }
     
-    init() {
+    init(model: TodoModelProtocol = TodoModel()) {
+        self.model = model
         NotificationCenter.default.addObserver(self, selector: #selector(self.addTask), name: .textFieldReturn, object: nil)
     }
     
