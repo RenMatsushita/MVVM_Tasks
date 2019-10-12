@@ -12,19 +12,23 @@ class TodoModel {
     
     private let userDefaults = UserDefaults.standard
     
-    func getTask() -> [String] {
-        guard let tasks = self.userDefaults.array(forKey: "tasks") as? [String] else { return ["タスクを入力してください"] }
+    func getTasks() -> [String]? {
+        guard let tasks: [String] = self.userDefaults.array(forKey: "tasks") as? [String] else { return nil }
         return tasks
     }
     
     func setTask(taskTitle newTaskTitle: String) {
-        var taskTitleList: [String] = self.getTask()
+        var taskTitleList: [String] = []
+        if let tasks: [String] = self.getTasks() {
+            taskTitleList = tasks
+        }
+        
         taskTitleList.append(newTaskTitle)
         self.userDefaults.set(taskTitleList, forKey: "tasks")
     }
     
     func deleteTask(index: Int) {
-        var taskTitleList: [String] = self.getTask()
+        guard var taskTitleList: [String] = self.getTasks() else { return }
         taskTitleList.remove(at: index)
         self.userDefaults.set(taskTitleList, forKey: "tasks")
     }

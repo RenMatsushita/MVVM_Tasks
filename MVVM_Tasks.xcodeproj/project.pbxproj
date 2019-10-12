@@ -11,12 +11,14 @@
 		C12B386A234F405400D9ECBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B3869234F405400D9ECBD /* SceneDelegate.swift */; };
 		C12B3871234F405800D9ECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12B3870234F405800D9ECBD /* Assets.xcassets */; };
 		C12B3874234F405800D9ECBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12B3872234F405800D9ECBD /* LaunchScreen.storyboard */; };
+		C12E2C8E2351F43600A61D66 /* TasksViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E2C8D2351F43600A61D66 /* TasksViewController+UITextField.swift */; };
 		C19C9758234F40C2008DB93C /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19C9757234F40C2008DB93C /* Tasks.storyboard */; };
 		C19C975B234F40E1008DB93C /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C9759234F40E1008DB93C /* TasksTableViewCell.swift */; };
 		C19C975E234F40F3008DB93C /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C975D234F40F3008DB93C /* TasksViewController.swift */; };
-		C19C9760234F4111008DB93C /* TasksViewController+UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C975F234F4111008DB93C /* TasksViewController+UITableViewExtension.swift */; };
+		C19C9760234F4111008DB93C /* TasksViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C975F234F4111008DB93C /* TasksViewController+UITableView.swift */; };
 		C19C9762234F4131008DB93C /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C9761234F4131008DB93C /* TasksViewModel.swift */; };
 		C19C9764234F4139008DB93C /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C9763234F4139008DB93C /* TasksModel.swift */; };
+		C19C976623500981008DB93C /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C976523500981008DB93C /* NotificationNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,12 +28,14 @@
 		C12B3870234F405800D9ECBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C12B3873234F405800D9ECBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C12B3875234F405800D9ECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C12E2C8D2351F43600A61D66 /* TasksViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksViewController+UITextField.swift"; sourceTree = "<group>"; };
 		C19C9757234F40C2008DB93C /* Tasks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tasks.storyboard; sourceTree = "<group>"; };
 		C19C9759234F40E1008DB93C /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		C19C975D234F40F3008DB93C /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		C19C975F234F4111008DB93C /* TasksViewController+UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksViewController+UITableViewExtension.swift"; sourceTree = "<group>"; };
+		C19C975F234F4111008DB93C /* TasksViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TasksViewController+UITableView.swift"; sourceTree = "<group>"; };
 		C19C9761234F4131008DB93C /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		C19C9763234F4139008DB93C /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
+		C19C976523500981008DB93C /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,15 +69,32 @@
 			isa = PBXGroup;
 			children = (
 				C19C9756234F409F008DB93C /* Views */,
+				C18DA75623500AEE00FB422C /* ViewModels */,
+				C18DA75723500AF900FB422C /* Models */,
+				C19C976523500981008DB93C /* NotificationNames.swift */,
 				C12B3867234F405400D9ECBD /* AppDelegate.swift */,
 				C12B3869234F405400D9ECBD /* SceneDelegate.swift */,
-				C19C9761234F4131008DB93C /* TasksViewModel.swift */,
-				C19C9763234F4139008DB93C /* TasksModel.swift */,
 				C12B3870234F405800D9ECBD /* Assets.xcassets */,
 				C12B3872234F405800D9ECBD /* LaunchScreen.storyboard */,
 				C12B3875234F405800D9ECBD /* Info.plist */,
 			);
 			path = MVVM_Tasks;
+			sourceTree = "<group>";
+		};
+		C18DA75623500AEE00FB422C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C19C9761234F4131008DB93C /* TasksViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C18DA75723500AF900FB422C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C19C9763234F4139008DB93C /* TasksModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C19C9755234F4091008DB93C /* Tasks */ = {
@@ -82,7 +103,8 @@
 				C19C9757234F40C2008DB93C /* Tasks.storyboard */,
 				C19C975D234F40F3008DB93C /* TasksViewController.swift */,
 				C19C9759234F40E1008DB93C /* TasksTableViewCell.swift */,
-				C19C975F234F4111008DB93C /* TasksViewController+UITableViewExtension.swift */,
+				C19C975F234F4111008DB93C /* TasksViewController+UITableView.swift */,
+				C12E2C8D2351F43600A61D66 /* TasksViewController+UITextField.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -168,9 +190,11 @@
 			files = (
 				C19C975B234F40E1008DB93C /* TasksTableViewCell.swift in Sources */,
 				C19C9762234F4131008DB93C /* TasksViewModel.swift in Sources */,
-				C19C9760234F4111008DB93C /* TasksViewController+UITableViewExtension.swift in Sources */,
+				C12E2C8E2351F43600A61D66 /* TasksViewController+UITextField.swift in Sources */,
+				C19C9760234F4111008DB93C /* TasksViewController+UITableView.swift in Sources */,
 				C19C975E234F40F3008DB93C /* TasksViewController.swift in Sources */,
 				C19C9764234F4139008DB93C /* TasksModel.swift in Sources */,
+				C19C976623500981008DB93C /* NotificationNames.swift in Sources */,
 				C12B3868234F405400D9ECBD /* AppDelegate.swift in Sources */,
 				C12B386A234F405400D9ECBD /* SceneDelegate.swift in Sources */,
 			);

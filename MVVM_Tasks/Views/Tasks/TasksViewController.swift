@@ -10,42 +10,47 @@ import UIKit
 
 class TasksViewController: UIViewController {
     
-    @IBOutlet private weak var tasksTableView: UITableView!
-    @IBOutlet private weak var taskTextField: UITextField!
+    @IBOutlet private weak var tasksTableView: UITableView! {
+        didSet {
+            
+            tasksTableView.dataSource = self
+        }
+    }
     
-    lazy var viewModel = TasksViewModel()
+    @IBOutlet weak var taskTextField: UITextField! {
+        didSet {
+            taskTextField.delegate = self
+        }
+    }
+    
+    var viewModel = TasksViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = editButtonItem
+        tasksTableView.dataSource = self
+        tasksTableView.delegate = self
         
         taskTextField.delegate = self
-        
-        tasksTableView.rowHeight = 70
-        tasksTableView.dataSource = self
+    
+        self.configure()
+               
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadHandler), name: .reloadData, object: nil)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
+
         tasksTableView.isEditing = editing
     }
-}
-
-extension TasksViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let taskTitle = taskTextField.text else { return true }
-        guard taskTitle.count != 0 else {
-            textField.resignFirstResponder()
-            return true
-        }
-        viewModel.setTask(title: taskTitle)
+    
+    @objc func reloadHandler() {
         tasksTableView.reloadData()
-        textField.resignFirstResponder()
-        return true
+    }
+    
+    private func configure() {
+        navigationItem.leftBarButtonItem = editButtonItem
+        tasksTableView.rowHeight = 70
     }
 }
-
-
 
