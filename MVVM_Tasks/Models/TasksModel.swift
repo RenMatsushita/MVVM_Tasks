@@ -8,27 +8,36 @@
 
 import Foundation
 
-class TodoModel {
+protocol TodoModelProtocol {
+    func getTasks() -> [String]
+    func setTask(taskTitle newTaskTitle: String)
+    func deleteTask(index: Int)
+}
+
+class TodoModel: TodoModelProtocol {
     
     private let userDefaults = UserDefaults.standard
     
-    func getTasks() -> [String]? {
-        guard let tasks: [String] = self.userDefaults.array(forKey: "tasks") as? [String] else { return nil }
+    func getTasks() -> [String] {
+        guard let tasks = self.userDefaults.array(forKey: "tasks") as? [String] else {
+            return []
+        }
         return tasks
     }
     
     func setTask(taskTitle newTaskTitle: String) {
         var taskTitleList: [String] = []
-        if let tasks: [String] = self.getTasks() {
-            taskTitleList = tasks
-        }
+        taskTitleList = self.getTasks()
         
         taskTitleList.append(newTaskTitle)
         self.userDefaults.set(taskTitleList, forKey: "tasks")
     }
     
     func deleteTask(index: Int) {
-        guard var taskTitleList: [String] = self.getTasks() else { return }
+        var taskTitleList = self.getTasks()
+        guard !taskTitleList.isEmpty else {
+            return
+        }
         taskTitleList.remove(at: index)
         self.userDefaults.set(taskTitleList, forKey: "tasks")
     }
